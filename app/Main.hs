@@ -3,7 +3,6 @@
 module Main (main) where
 
 import Control.Monad (unless)
-import Lib
 import SDL
 
 main :: IO ()
@@ -15,20 +14,19 @@ main = do
   app
   SDL.destroyWindow window
   SDL.quit
-  someFunc
 
 app :: IO ()
 app = do
-  let loop = do
-        let collectEvents = do
-              e <- SDL.pollEvent
-              case e of
-                Nothing -> return []
-                Just e' -> (e' :) <$> collectEvents
-        events <- collectEvents
-        let q = any ((== SDL.QuitEvent) . SDL.eventPayload) events
-        unless q loop
-  loop
+  events <- readEvents
+  let q = any ((== SDL.QuitEvent) . SDL.eventPayload) events
+  unless q app
+
+readEvents :: IO [Event]
+readEvents = do
+  e <- SDL.pollEvent
+  case e of
+    Just e' -> (e' :) <$> readEvents
+    _ -> return []
 
 windowConfig :: SDL.WindowConfig
 windowConfig =
