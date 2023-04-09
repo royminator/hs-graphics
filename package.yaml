@@ -23,7 +23,12 @@ dependencies:
 - base >= 4.7 && < 5
 - sdl2 >= 2.0.6
 - linear
-- OpenGL
+- OpenGL 
+- GLUtil >= 0.10.4
+- vinyl-gl >= 0.3.4
+- vinyl >= 0.14.3
+- filepath
+- text
 
 ghc-options:
 - -Wall
