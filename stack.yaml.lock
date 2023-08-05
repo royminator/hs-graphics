@@ -3,32 +3,11 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages:
-- completed:
-    hackage: GLUtil-0.10.4@sha256:48f76f9c9666e45062c2fc4146162ca69dc773c742e61e06d752ca05ca1754ba,3217
-    pantry-tree:
-      sha256: 370a3e73ae8f35fd5c2913320b5d3a5f7170ae649177d207a6b7ed91534c1281
-      size: 1618
-  original:
-    hackage: GLUtil-0.10.4
-- completed:
-    hackage: vinyl-gl-0.3.4@sha256:44376b1a6b29db06bd06c96ffc9c026e432d90f0d88809c987a48cba4d36ce39,1748
-    pantry-tree:
-      sha256: ad4817580424c2772b99d2aaf6b03fe5f7ec6e937e462b298131c9b98e4d6827
-      size: 535
-  original:
-    hackage: vinyl-gl-0.3.4
-- completed:
-    hackage: vinyl-0.14.3@sha256:08565c5d9ed8a5ba69915bffe8960f048587478155d5915a56d2e93b8ba3466f,4267
-    pantry-tree:
-      sha256: 8e6d12a18493a741c736c66d3f19be48ea9e52acdd38e66cfe87bbfd88cdbf7e
-      size: 2146
-  original:
-    hackage: vinyl-0.14.3
+packages: []
 snapshots:
 - completed:
-    sha256: adbc602422dde10cc330175da7de8609e70afc41449a7e2d6e8b1827aa0e5008
-    size: 649342
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/20/11.yaml
+    sha256: caa77fdbc5b9f698262b21ee78030133272ec53116ad6ddbefdc4c321f668e0c
+    size: 640014
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/21/4.yaml
   original:
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/20/11.yaml
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/21/4.yaml

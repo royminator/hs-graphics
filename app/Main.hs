@@ -1,20 +1,14 @@
 {-# LANGUAGE DataKinds #-}
+{-# LANGUAGE OverloadedRecordDot #-}
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TypeOperators #-}
 
 module Main (main) where
 
 import Control.Monad (unless)
 import Data.Text (pack)
-import Data.Vinyl
-import Graphics.GLUtil
 import Graphics.Rendering.OpenGL as GL
-import Graphics.VinylGL
-import Linear
 import SDL
-import System.FilePath ((</>))
-
-type Pos = "position" ::: V3 GLfloat
+import Shader
 
 main :: IO ()
 main = do
@@ -28,24 +22,19 @@ main = do
 
 app :: SDL.Window -> IO ()
 app window = do
-  GL.clearColor $= Color4 1 0 0 1
+  GL.clearColor $= Color4 0.8 0.2 0.2 1
   GL.clear [ColorBuffer]
+  SDL.glSwapWindow window
   events <- readEvents
   let q = any ((== SDL.QuitEvent) . SDL.eventPayload) events
-  d <- dunno
-  d
-  SDL.glSwapWindow window
   unless q (app window)
 
-dunno :: IO (IO ())
-dunno = do
-  shader <- simpleShaderProgram ("src" </> "shaders" </> "triangle2d.vert") ("src" </> "shaders" </> "triangle2d.frag")
-  verts <- bufferVertices triangle
-  vao <- makeVAO $ do
-    enableVertices' shader verts
-    bindVertices verts
-  return . withVAO vao $
-    do currentProgram $= Just (program shader)
+triangleVerts :: [V2 GLfloat]
+triangleVerts =
+  [ V2 (-0.5) (-0.5),
+    V2 0.5 (-0.5),
+    V2 0.0 0.5
+  ]
 
 readEvents :: IO [Event]
 readEvents = do
@@ -57,15 +46,3 @@ readEvents = do
 windowConfig :: SDL.WindowConfig
 windowConfig =
   SDL.defaultWindow {SDL.windowGraphicsContext = SDL.OpenGLContext SDL.defaultOpenGL}
-
-triangle :: [FieldRec '[Pos]]
-triangle =
-  map
-    pos
-    [ V3 (-0.5) (-0.5) 0.0,
-      V3 0.5 (-0.5) 0.0,
-      V3 0.5 0.0 0.0
-    ]
-
-pos :: V3 GLfloat -> FieldRec '[Pos]
-pos = (:& RNil) . Field
