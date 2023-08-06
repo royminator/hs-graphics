@@ -33,6 +33,7 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       OpenGL
+    , StateVar
     , base >=4.7 && <5
     , filepath
     , linear
@@ -49,6 +50,7 @@ executable hs-graphics-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       OpenGL
+    , StateVar
     , base >=4.7 && <5
     , filepath
     , hs-graphics
@@ -67,6 +69,7 @@ test-suite hs-graphics-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       OpenGL
+    , StateVar
     , base >=4.7 && <5
     , filepath
     , hs-graphics

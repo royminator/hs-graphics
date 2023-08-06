@@ -26,6 +26,7 @@ dependencies:
 - OpenGL 
 - filepath
 - text
+- StateVar
 
 ghc-options:
 - -Wall

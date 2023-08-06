@@ -9,6 +9,7 @@ import Data.Text (pack)
 import Graphics.Rendering.OpenGL as GL
 import SDL
 import Shader
+import System.FilePath
 
 main :: IO ()
 main = do
@@ -16,6 +17,7 @@ main = do
   window <- SDL.createWindow (pack "hs-graphics") windowConfig
   SDL.showWindow window
   _ <- SDL.glCreateContext window
+  createShaders ("src" </> "shaders") "triangle2d"
   app window
   SDL.destroyWindow window
   SDL.quit
