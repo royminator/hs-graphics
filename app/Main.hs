@@ -10,6 +10,7 @@ import Graphics.Rendering.OpenGL as GL
 import SDL
 import Shader
 import System.FilePath
+import Control.Monad.Except
 
 main :: IO ()
 main = do
@@ -17,7 +18,10 @@ main = do
   window <- SDL.createWindow (pack "hs-graphics") windowConfig
   SDL.showWindow window
   _ <- SDL.glCreateContext window
-  createShaders ("src" </> "shaders") "triangle2d"
+  shaders <- runExceptT $ createShaders ("src" </> "shaders") "triangle2d"
+  case shaders of
+    Right _ -> putStrLn "successfully compiled shaders"
+    Left err -> putStrLn err
   app window
   SDL.destroyWindow window
   SDL.quit

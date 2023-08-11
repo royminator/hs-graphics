@@ -27,6 +27,7 @@ dependencies:
 - filepath
 - text
 - StateVar
+- mtl
 
 ghc-options:
 - -Wall
